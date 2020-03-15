@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Primes</title>
+</head>
+<body>
+    <h1>Primes!</h1>
+    <div class="primes">
+        <label for="prime"></label>
+        <input type="number" id="prime">
+        <button class="calculate">Calculate</button>
+        <div>
+            <p class="count">
+
+            </p>
+            <p class="time">
+
+            </p>
+            <p class="result">
+
+            </p>
+        </div>
+    </div>
+
+    <script>
+        
+        var result = document.querySelector(".result");
+        var countEl = document.querySelector(".count");
+        var timeEl = document.querySelector(".time");
+
+        document.querySelector(".calculate").addEventListener("click",(e) => {
+            var primesUpTo = +document.querySelector("#prime").value;
+            result.innerText = "";
+            var primes = "";
+            var count = 0;
+            var d = new Date;
+            var start = d.getTime();
+
+            loop1:
+            for(var i = 2; i <= primesUpTo; i++){
+                for(var j = 2; j <= (i/2); j++){
+                    if(i%j === 0){
+                        continue loop1
+                    }
+                }
+                count++;
+                primes += " " + i;
+            }
+            d = new Date;
+            countEl.innerText = `Primes before ${primesUpTo}: ${count}`;
+            result.innerText = primes;
+            console.log(primes);
+
+            var end = d.getTime();
+            var totalMilis = end - start;
+
+            timeEl.innerText = `Execution time: ${totalMilis}ms`
+            
+        })
+    </script>
+</body>
+</html>
