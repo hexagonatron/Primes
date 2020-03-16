@@ -9,7 +9,7 @@
 <body>
     <h1>Primes!</h1>
     <div class="primes">
-        <label for="prime"></label>
+        <label for="prime">Enter a number to find all primes before (plz not over 50,000 unless you want to crash your browser)</label>
         <input type="number" id="prime">
         <button class="calculate">Calculate</button>
         <div>
@@ -34,7 +34,7 @@
         document.querySelector(".calculate").addEventListener("click",(e) => {
             var primesUpTo = +document.querySelector("#prime").value;
             result.innerText = "";
-            var primes = "";
+            var primes = "List of Prime numbers: ";
             var count = 0;
             var d = new Date;
             var start = d.getTime();
